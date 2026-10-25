@@ -1,79 +1,140 @@
-# --- Q1: Using break in a Loop ---
-print("Q1 Break at 5:", end=" ")
-for i in range(1, 11):
-    if i == 5:
+# ==========================================================
+# Question 1: Using break in a Loop
+# ==========================================================
+print("--- Question 1 ---")
+for num in range(1, 11):
+    if num == 5:
         break
-    print(i, end=" ")
-print()
+    print(num)
 
-# --- Q2: Using continue in a Loop ---
-print("Q2 Skip multiples of 3:", end=" ")
-for i in range(1, 11):
-    if i % 3 == 0:
+
+# ==========================================================
+# Question 2: Using continue in a Loop
+# ==========================================================
+print("\n--- Question 2 ---")
+for num in range(1, 11):
+    if num % 3 == 0:
         continue
-    print(i, end=" ")
+    print(num)
+
+
+# ==========================================================
+# Question 3: Difference Between break and continue
+# ==========================================================
+print("\n--- Question 3 ---")
+print("Using break:")
+for num in range(1, 11):
+    if num == 5:
+        break
+    print(num, end=" ")
+
+print("\n\nUsing continue:")
+for num in range(1, 11):
+    if num == 5:
+        continue
+    print(num, end=" ")
 print()
 
-# --- Q3: Difference Between break and continue ---
-print("Q3 Break on 5:", [i for i in range(1, 5)])
-print("Q3 Continue on 5:", [i for i in range(1, 8) if i != 5])
 
-# --- Q4: Searching in a List using break ---
-nums = [12, 45, 78, 34, 89, 23]
-target = 34
-for idx, val in enumerate(nums):
-    if val == target:
-        print(f"Q4: Found {target} at index {idx}")
+# ==========================================================
+# Question 4: Searching in a List
+# ==========================================================
+print("\n--- Question 4 ---")
+numbers = [12, 45, 78, 23, 89, 56, 99]
+target = int(input("Enter number to search: "))
+found_index = -1
+
+for i in range(len(numbers)):
+    if numbers[i] == target:
+        found_index = i
         break
 
-# --- Q5: First Divisible Number Finder ---
-n = 17
+if found_index != -1:
+    print(f"Element found at index position: {found_index}")
+else:
+    print("Element not found.")
+
+
+# ==========================================================
+# Question 5: First Divisible Number Finder
+# ==========================================================
+print("\n--- Question 5 ---")
+n = int(input("Enter a number (n): "))
+
 for i in range(1, 101):
     if i % n == 0:
-        print(f"Q5: First number between 1-100 divisible by {n} is {i}")
+        print(f"First number between 1-100 divisible by {n} is: {i}")
         break
 
-# --- Q6: Skip Negative Numbers ---
-mixed_list = [10, -5, 22, -18, 0, 35, -2]
-print("Q6 Positive numbers only:", end=" ")
-for x in mixed_list:
-    if x < 0:
+
+# ==========================================================
+# Question 6: Skip Negative Numbers
+# ==========================================================
+print("\n--- Question 6 ---")
+numbers_list = [10, -5, 20, -1, 30, -12, 40]
+print("Positive numbers only:")
+for num in numbers_list:
+    if num < 0:
         continue
-    print(x, end=" ")
+    print(num, end=" ")
 print()
 
-# --- Q7: Sum of Valid Inputs Only ---
-valid_sum = 0
+
+# ==========================================================
+# Question 7: Sum of Valid Inputs Only
+# ==========================================================
+print("\n--- Question 7 ---")
+total = 0.0
+
 while True:
-    val = int(input("Q7 Enter number (0 to stop, negatives ignored): "))
+    val = float(input("Enter a number (0 to stop): "))
     if val == 0:
         break
     if val < 0:
+        print("Negative number ignored.")
         continue
-    valid_sum += val
-print("Q7 Sum of valid inputs:", valid_sum)
+    total += val
 
-# --- Q8: Password Retry System ---
-secret = "admin123"
-for attempt in range(1, 4):
-    pwd = input(f"Q8 Attempt {attempt}/3 - Enter Password: ")
-    if pwd == secret:
-        print("Q8: Access Granted!")
-        break
-else:
-    print("Q8: Account Locked! 3 failed attempts.")
+print(f"Sum of valid numbers: {total}")
 
-# --- Q9: Using pass in Empty Blocks ---
-for i in range(5):
-    if i == 3:
-        pass  # Placeholder for future logic; prevents syntax error
-print("Q9: Loop with 'pass' executed smoothly.")
 
-# --- Q10: Pattern with Conditional Skipping (Skip Even Numbers) ---
-print("Q10 Pattern skipping multiples of 2:")
+# ==========================================================
+# Question 8: Password Retry System
+# ==========================================================
+print("\n--- Question 8 ---")
+correct_password = "python123"
+
 for i in range(1, 4):
-    for j in range(1, 6):
-        if j % 2 == 0:
-            continue
-        print(j, end=" ")
+    entered_password = input(f"Attempt {i}/3 - Enter password: ")
+    if entered_password == correct_password:
+        print("Login successful!")
+        break
+    else:
+        print("Incorrect password.")
+else:
+    # Executes only if the loop was not broken by a correct password
+    print("Login failed! You have used all 3 attempts.")
+
+
+# ==========================================================
+# Question 9: Using pass in Empty Blocks
+# ==========================================================
+print("\n--- Question 9 ---")
+# 'pass' acts as a syntactical placeholder where code is required but no action is needed
+for num in range(1, 6):
+    if num == 3:
+        pass  # Placeholder: do nothing when num is 3
+    else:
+        print(f"Number: {num}")
+
+
+# ==========================================================
+# Question 10: Pattern with Conditional Skipping
+# ==========================================================
+print("\n--- Question 10 ---")
+for row in range(1, 5):
+    for col in range(1, 6):
+        if col % 2 == 0:
+            continue  # Skip even numbers
+        print(col, end=" ")
     print()
