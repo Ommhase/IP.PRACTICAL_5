@@ -1,140 +1,184 @@
-# ==========================================================
-# Question 1: Using break in a Loop
-# ==========================================================
-print("--- Question 1 ---")
-for num in range(1, 11):
-    if num == 5:
-        break
-    print(num)
+<!-- ==========================================================
+     PRACTICAL 5: JAVASCRIPT BASICS AND FORM VALIDATION
+     ========================================================== -->
+
+<!-- ==========================================================
+     Question 1: Display a Message
+     ========================================================== -->
+<button onclick="showMessage()">Click Me</button>
+<p id="msg"></p>
+<script>
+    function showMessage() {
+        document.getElementById('msg').textContent = 'Welcome to JavaScript!';
+    }
+</script>
 
 
-# ==========================================================
-# Question 2: Using continue in a Loop
-# ==========================================================
-print("\n--- Question 2 ---")
-for num in range(1, 11):
-    if num % 3 == 0:
-        continue
-    print(num)
+<!-- ==========================================================
+     Question 2: Mathematical Operations
+     ========================================================== -->
+<script>
+    let a = 10, b = 5;
+    document.write('Addition = ' + (a + b) + '<br>');
+    document.write('Subtraction = ' + (a - b) + '<br>');
+    document.write('Multiplication = ' + (a * b) + '<br>');
+    document.write('Division = ' + (b !== 0 ? (a / b) : 'Cannot divide by zero') + '<br>');
+</script>
 
 
-# ==========================================================
-# Question 3: Difference Between break and continue
-# ==========================================================
-print("\n--- Question 3 ---")
-print("Using break:")
-for num in range(1, 11):
-    if num == 5:
-        break
-    print(num, end=" ")
-
-print("\n\nUsing continue:")
-for num in range(1, 11):
-    if num == 5:
-        continue
-    print(num, end=" ")
-print()
+<!-- ==========================================================
+     Question 3: Current Date and Time
+     ========================================================== -->
+<p id="datetime"></p>
+<script>
+    document.getElementById('datetime').textContent = new Date().toLocaleString();
+</script>
 
 
-# ==========================================================
-# Question 4: Searching in a List
-# ==========================================================
-print("\n--- Question 4 ---")
-numbers = [12, 45, 78, 23, 89, 56, 99]
-target = int(input("Enter number to search: "))
-found_index = -1
-
-for i in range(len(numbers)):
-    if numbers[i] == target:
-        found_index = i
-        break
-
-if found_index != -1:
-    print(f"Element found at index position: {found_index}")
-else:
-    print("Element not found.")
+<!-- ==========================================================
+     Question 4: Validate Technology Name
+     ========================================================== -->
+<script>
+    function validateTechnology() {
+        const value = document.getElementById('technology').value.trim();
+        if (value === '') {
+            alert('Enter a technology name');
+            return false;
+        }
+        alert('Technology name accepted');
+        return true;
+    }
+</script>
 
 
-# ==========================================================
-# Question 5: First Divisible Number Finder
-# ==========================================================
-print("\n--- Question 5 ---")
-n = int(input("Enter a number (n): "))
+<!-- ==========================================================
+     Question 5: Validate Email Pattern
+     ========================================================== -->
+<script>
+    function validateEmail() {
+        const email = document.getElementById('email').value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Enter a valid email');
+            return false;
+        }
+        return true;
+    }
+</script>
 
-for i in range(1, 101):
-    if i % n == 0:
-        print(f"First number between 1-100 divisible by {n} is: {i}")
-        break
+==========================================================
+     Whole Combined Code (practical5.html)
+==========================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Basics and Validation</title>
+</head>
+<body>
+    <h1>JavaScript Demonstration</h1>
 
+    <!-- Display Message -->
+    <button onclick="showMessage()">Display Message</button>
+    <p id="message"></p>
 
-# ==========================================================
-# Question 6: Skip Negative Numbers
-# ==========================================================
-print("\n--- Question 6 ---")
-numbers_list = [10, -5, 20, -1, 30, -12, 40]
-print("Positive numbers only:")
-for num in numbers_list:
-    if num < 0:
-        continue
-    print(num, end=" ")
-print()
+    <!-- Calculator -->
+    <h2>Calculator</h2>
+    <label>First number: <input type="number" id="a" value="10"></label><br><br>
+    <label>Second number: <input type="number" id="b" value="5"></label><br><br>
+    <button onclick="calculate()">Calculate</button>
+    <p id="mathResult"></p>
 
+    <!-- Date & Time -->
+    <h2>Current Date and Time</h2>
+    <p id="datetime"></p>
 
-# ==========================================================
-# Question 7: Sum of Valid Inputs Only
-# ==========================================================
-print("\n--- Question 7 ---")
-total = 0.0
+    <!-- Form Validation -->
+    <h2>Technology Form</h2>
+    <form onsubmit="return validateForm()">
+        <label>Technology: <input type="text" id="technology" required></label><br><br>
+        <label>Email: <input type="email" id="email" required></label><br><br>
+        <label>Contact (10 digits): <input type="text" id="contact" required></label><br><br>
+        
+        <label>Category:
+            <select id="category" required>
+                <option value="">Choose</option>
+                <option value="AI">AI</option>
+                <option value="Cloud">Cloud Computing</option>
+                <option value="Cyber">Cyber Security</option>
+                <option value="IoT">IoT</option>
+            </select>
+        </label><br><br>
 
-while True:
-    val = float(input("Enter a number (0 to stop): "))
-    if val == 0:
-        break
-    if val < 0:
-        print("Negative number ignored.")
-        continue
-    total += val
+        Impact:
+        <label><input type="radio" name="impact" value="High"> High</label>
+        <label><input type="radio" name="impact" value="Medium"> Medium</label>
+        <label><input type="radio" name="impact" value="Low"> Low</label><br><br>
 
-print(f"Sum of valid numbers: {total}")
+        Areas:
+        <label><input type="checkbox" name="areas" value="Healthcare"> Healthcare</label>
+        <label><input type="checkbox" name="areas" value="Education"> Education</label><br><br>
 
+        <button type="submit">Validate</button>
+    </form>
 
-# ==========================================================
-# Question 8: Password Retry System
-# ==========================================================
-print("\n--- Question 8 ---")
-correct_password = "python123"
+    <script>
+        function showMessage() {
+            document.getElementById('message').textContent = 'Welcome to JavaScript!';
+        }
 
-for i in range(1, 4):
-    entered_password = input(f"Attempt {i}/3 - Enter password: ")
-    if entered_password == correct_password:
-        print("Login successful!")
-        break
-    else:
-        print("Incorrect password.")
-else:
-    # Executes only if the loop was not broken by a correct password
-    print("Login failed! You have used all 3 attempts.")
+        function calculate() {
+            const a = Number(document.getElementById('a').value);
+            const b = Number(document.getElementById('b').value);
+            let result = `Addition: ${a + b} | Subtraction: ${a - b} | Multiplication: ${a * b} | `;
+            result += (b !== 0) ? `Division: ${a / b}` : 'Division: Cannot divide by zero';
+            document.getElementById('mathResult').textContent = result;
+        }
 
+        document.getElementById('datetime').textContent = new Date().toLocaleString();
 
-# ==========================================================
-# Question 9: Using pass in Empty Blocks
-# ==========================================================
-print("\n--- Question 9 ---")
-# 'pass' acts as a syntactical placeholder where code is required but no action is needed
-for num in range(1, 6):
-    if num == 3:
-        pass  # Placeholder: do nothing when num is 3
-    else:
-        print(f"Number: {num}")
+        function validateForm() {
+            const technology = document.getElementById('technology').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const contact = document.getElementById('contact').value.trim();
+            const category = document.getElementById('category').value;
 
+            if (!technology) {
+                alert('Enter a technology name');
+                return false;
+            }
 
-# ==========================================================
-# Question 10: Pattern with Conditional Skipping
-# ==========================================================
-print("\n--- Question 10 ---")
-for row in range(1, 5):
-    for col in range(1, 6):
-        if col % 2 == 0:
-            continue  # Skip even numbers
-        print(col, end=" ")
-    print()
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Enter a valid email');
+                return false;
+            }
+
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(contact)) {
+                alert('Enter a 10-digit contact number');
+                return false;
+            }
+
+            if (!category) {
+                alert('Select a category');
+                return false;
+            }
+
+            if (!document.querySelector('input[name="impact"]:checked')) {
+                alert('Select impact level');
+                return false;
+            }
+
+            if (!document.querySelector('input[name="areas"]:checked')) {
+                alert('Select at least one application area');
+                return false;
+            }
+
+            alert('All fields are valid!');
+            return true;
+        }
+    </script>
+</body>
+</html>
